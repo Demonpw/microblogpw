@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="{{ url_for('static',filename='editormd/css/editormd.css') }}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="这是一个 index 页面">
+    <meta name="keywords" content="index">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <link rel="icon" type="image/png" href="{{url_for('static',filename='assets/i/favicon.png')}}">
+    <link rel="apple-touch-icon-precomposed" href="{{url_for('static',filename='assets/i/app-icon72x72@2x.png')}}">
+    <meta name="apple-mobile-web-app-title" content="Amaze UI" />
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/amazeui.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/amazeui.datatables.min.css')}}" />
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/app.css')}}">
+    <script src="{{url_for('static',filename='assets/js/jquery.min.js')}}"></script>
+	<link rel="stylesheet" href="{{url_for('static',filename='css/index.css')}}" />
+</head>
+
+	<!--<div>
+		Demonpw的游戏世界！
+		<a href="{{url_for('index')}}">
+			主页
+		</a>
+		{% if current_user.is_anonymous %}
+        <a href="{{ url_for('login') }}">登录</a>
+        {% else %}
+        <a href="{{ url_for('logout') }}">退出</a>
+        {% endif %}
+	</div>
+	<hr>
+	<p style="color: red;">
+	{% with messages = get_flashed_messages() %}
+	{% if messages %}
+	<ul>
+		{% for message in messages %}
+		<li>{{message}}</li>
+		{% endfor %}
+	</ul>
+
+	{% endif %}
+	{% endwith %}-->
+
+<style type="text/css">
+    
+    .eeditormd-image-iframe{
+        width: 90%;
+        height: 90%;
+        float: left;
+}
+    .editormd-file-input{
+        float: right;
+
+    }
+    .editormd-dialog-container{
+        height: 40rem;
+    }
+    .editormd-dialog{
+        height: 45rem !important;
+        width: 46rem;
+    }
+    .editormd-image-dialog{
+        height: 48rem !important;
+        width: 46rem;
+    }
+    #cate_add_div{
+        width: 100%;
+        height: 20rem;
+
+    }
+</style>
+<script type="text/javascript">
+    var imagedialog=document.getElementByClassName('editormd-image-dialog');
+    imagedialog.style.height = "45rem";
+</script>
+<body data-type="widgets">
+    <script src="{{url_for('static',filename='assets/js/theme.js')}}"></script>
+    <div class="am-g tpl-g">
+        <!-- 头部 -->
+        <header>
+            <!-- logo -->
+            <div class="am-fl tpl-header-logo">
+                <a href="javascript:;"><img src="" alt=""></a>
+            </div>
+            <!-- 右侧内容 -->
+            <div class="tpl-header-fluid">
+                <!-- 侧边切换 -->
+                <div class="am-fl tpl-header-switch-button am-icon-list">
+                    <span>
+
+                </span>
+                </div>
+                <!-- 搜索 -->
+                <div class="am-fl tpl-header-search">
+                    <form class="tpl-header-search-form" action="javascript:;">
+                        <button class="tpl-header-search-btn am-icon-search"></button>
+                        <input class="tpl-header-search-box" type="text" placeholder="搜索内容...">
+                    </form>
+                </div>
+                <!-- 其它功能-->
+                <div class="am-fr tpl-header-navbar">
+                    <ul>
+                        <!-- 欢迎语 -->
+                        {% if current_user.is_authenticated %}
+                        <li class="am-text-sm tpl-header-navbar-welcome">
+                            <a href="javascript:;">欢迎你, <span>{{current_user.username}}</span> </a>
+                        </li>
+                        <!-- 退出 -->
+                        <li class="am-text-sm">
+                            <a href="{{url_for('logout')}}">
+                                <span class="am-icon-sign-out"></span> 退出
+                            </a>
+                        </li>
+                        {% else %}
+                        <li class="am-text-sm">
+                            <a href="{{url_for('login')}}">
+                                <span class="am-text-light am-icon-key"></span>&nbsp登录
+                            </a>
+                        </li>
+                        <!--<li class="am-text-sm">
+                            <a href="{{url_for('register')}}">
+                                <span class="am-text-light am-icon-clone"></span>&nbsp注册
+                            </a>
+                        </li>-->
+                        {% endif %}
+                    </ul>
+                </div>
+            </div>
+
+        </header>
+        <!-- 风格切换 -->
+        <!--<div class="tpl-skiner">
+            <div class="tpl-skiner-toggle am-icon-cog">
+            </div>
+            <div class="tpl-skiner-content">
+                <div class="tpl-skiner-content-title">
+                    选择主题
+                </div>
+                <div class="tpl-skiner-content-bar">
+                    
+                    <span class="skiner-color skiner-black" data-color="theme-black"></span>
+                    <span class="skiner-color skiner-white" data-color="theme-white"></span>
+
+                </div>
+            </div>
+        </div>-->
+        <!-- 侧边导航栏 -->
+        <div class="left-sidebar">
+            <!-- 用户信息 -->
+            <div class="tpl-sidebar-user-panel">
+                <div class="tpl-user-panel-slide-toggleable">
+                    <div class="tpl-user-panel-profile-picture">
+                        <img src="{{url_for('static',filename='assets/img/1.png')}}"  alt="">
+                    </div>
+                    <span class="user-panel-logged-in-text">
+              <i class="am-icon-circle-o am-text-success tpl-user-panel-status-icon"></i>
+              君莫舞、无念
+          </span>
+                </div>
+            </div>
+            <!-- 菜单 -->
+            <ul class="sidebar-nav">
+                <li class="sidebar-nav-heading">Demonpw</li>
+                <li class="sidebar-nav-link">
+                    <a href="{{url_for('index')}}" class=" ">
+                        <i class="am-icon-home sidebar-nav-link-logo "></i> 首页
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="{{url_for('lunwen')}}">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 论文，即可所得
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="calendar.html">
+                        <i class="am-icon-calendar sidebar-nav-link-logo"></i> 日历，开心每天
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="" >
+                        <i class="am-icon-wpforms sidebar-nav-link-logo "></i> 文章，记录生活
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="chart.html">
+                        <i class="am-icon-bar-chart sidebar-nav-link-logo"></i> 资源，你我共享
+
+                    </a>
+                </li>
+
+                <li class="sidebar-nav-heading">博客文章</li>
+                <li class="sidebar-nav-link">
+                    <a href="javascript:;" class="sidebar-nav-sub-title">
+                        <i class="am-icon-table sidebar-nav-link-logo"></i> 分类
+                        <span class="am-icon-chevron-down am-fr am-margin-right-sm sidebar-nav-sub-ico sidebar-nav-sub-ico-rotate"></span>
+                    </a>
+                    <ul class="sidebar-nav sidebar-nav-sub" style="display: none;">
+                        {% for c in category %}
+                        <li class="sidebar-nav-link">
+                            <a href="table-list-img.html" >
+                                <span class="am-icon-angle-right sidebar-nav-link-logo"></span> {{c.name}}
+                                <span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">{{c.number}}</span>
+                            </a>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                {% if current_user.username == 'admin' %}
+                <li class="sidebar-nav-heading">后台管理</li>
+                <li class="sidebar-nav-link">
+                    <a href="{{url_for('allarticle')}}">
+                        <i class="am-icon-clone sidebar-nav-link-logo"></i> 博客管理
+                        <!--<span class="am-badge am-badge-secondary sidebar-nav-link-logo-ico am-round am-fr am-margin-right-sm">6</span>-->
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="login.html">
+                        <i class="am-icon-user-plus sidebar-nav-link-logo"></i> 用户管理
+                    </a>
+                </li>
+                <li class="sidebar-nav-link">
+                    <a href="{{url_for('categoryadd')}}">
+                        <i class="am-icon-user-plus sidebar-nav-link-logo"></i> 分类管理
+                    </a>
+                </li>
+                {% endif %}
+                
+
+            </ul>
+        </div>
+        <div  style="color: red;">
+            {% with messages=get_flashed_messages() %}
+            {% if messages %}
+            <ul>
+                {% for message in messages %}
+                <li>
+                    {{message}}
+                </li>
+                {%endfor%}
+            </ul>
+            {% endif %}
+            {% endwith %}
+        </div>
+    {% block content %}
+	{% endblock %}
+	</div>
+    <script src="{{url_for('static',filename='assets/js/amazeui.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/js/app.js')}}"></script>
+
+</body>
+
+</html>

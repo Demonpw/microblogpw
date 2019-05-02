@@ -1,0 +1,24 @@
+2019.4.26更新
+数据库category表增加number字段
+上传文章时number字段加一
+左边导航栏分类模块使用动态加载数据库的方式
+文章编辑界面新增删除功能
+新增分类管理界面
+
+2019.4.27更新
+分类管理界面完善
+分类管理界面实现新增、删除（编辑没加）
+遇到两个坑（之后写博客补上）
+dict(form.categories.choices).get(form.categories.data))
+1、从html的下拉框选择类型后，获取界面上已经选择的数据，将数据传到数据库上，并非是简单的form.categories.data
+2、自定义的分类form中，使用selectfield
+categories=SelectField('文章种类', choices=[],coerce=int )
+为了使数据库中的好几个分类与html界面同步，需要加上
+#保证数据与数据库同步
+	def __init__(self):
+		super(PostForm, self).__init__()
+		self.categories.choices = [(c.id, c.name) for c in Category.query.order_by('id')]
+
+2019.4.30更新
+去掉主题切换的图标
+评论功能的逻辑和数据库（评论下的回复没有设计，界面也没有设计好）

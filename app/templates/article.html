@@ -1,0 +1,175 @@
+{% extends "admin/base.html"%}
+
+{% block content %}
+<!--<div class="col-lg-12 post-text">
+     
+ </div>-->
+ <!-- 侧边导航栏 -->
+ <style type="text/css">
+    img{
+        width: 50rem;
+        height: 30rem;
+        
+          /* v2.3 开始移除以下代码，详见 #502 */
+          /* max-width: 100%;
+          height: auto;*/
+        
+        border: 0;
+    }
+    .light-text{
+        color: white;
+        font-size: 2rem;
+    }
+ </style>
+        
+        <!-- 内容区域 -->
+        <div class="tpl-content-wrapper">
+            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12" style="background-image:url(../static/assets/img/headbg1.jpg);background-repeat: no-repeat;
+     background-size: cover;
+    -webkit-background-size: cover;
+    -o-background-size: cover;
+    background-position: 100% 100%;background-attachment: fixed;"  id="bgPic">
+                <div class="am-u-sm-12 am-u-md-12 am-u-lg-9 am-fl" >
+                    <div class="am-u-sm-12 am-u-md-12 am-u-lg-12  am-fl" style="height: 30rem;">
+                        <div class="am-center " style="width: 37rem; line-height: 30rem;">
+                            <h1 class="" style="color: white;font-size: 3rem;text-align: center;">
+                                <span class="am-icon-home page-header-heading-icon"></span>&nbsp;{{article.title}}
+                            </h1>
+                        </div>
+                    </div>
+                    <div class="row-content am-cf">
+                        <div class="row  am-cf">
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12  am-fl">
+                                <div class="light-text am-center "style="width: 90%;">
+                                 <ol class="am-breadcrumb am-fl " >
+                                  <li><a href="#" class="am-icon-home">首页</a></li>
+                                 
+                                    <li><a href="#">分类</a></li>
+                                  <li class="am-active">内容</li>
+                                 
+                                </ol> 
+                                </div>
+                            </div><!---->
+                            <div class="am-u-sm-12 am-u-md-12 am-u-lg-12  am-fl">
+                                <div class=" am-fl am-cf am-u-sm-12 am-u-md-12 am-u-lg-12">
+                                    <div id="" style="width: 90%;" class="am-center light-text">
+                                    <br>
+                                        <div class="widget-title am-vertical-align ">
+                                            <span class="am-icon-clock-o am-text-light am-fl">最后更新时间：{{article.create_time}}</span>
+                                            <span class="am-text-light am-fr">©著作权归作者所有</span>
+                                        </div>
+                                        
+                                        <hr>
+                                        <div class="widget-title am-vertical-align">
+                                            {{ article.body_html|markdown|safe }}
+                                        </div>
+                                        <br>
+                                        <div class="widget-body am-vertical-align ">
+                                        <button type="button" class="am-btn am-btn-default am-icon-credit-card am-btn-danger am-round am-center">&nbsp;赞赏</button>
+                                        </div>
+                                    <br>
+                                    </div>
+                                    <div class="am-center" style="width: 95%;">
+                                    {% if pre_bool %}
+                                    <a href="{{url_for('article',id=article.id-1)}}"><button type="button" class="am-btn am-btn-default  am-btn- am-round am-center am-fl"><span class="am-icon-arrow-circle-left"></span>&nbsp;上一篇</button></a>
+                                    {% endif %}
+                                    {% if next_bool %}
+                                    <a href="{{url_for('article',id=article.id+1)}}"><button type="button" class="am-btn am-btn-default  am-btn- am-round am-center am-fr">下一篇&nbsp;<span class="am-icon-arrow-circle-right"></span></button></a>
+                                    {% endif %}
+                                  </div>  
+                                </div>
+                            </div>
+                            <div>
+                                <form action="" method="post" class="am-form-inline" role="form">
+                                  <div class="am-form-group">
+                                    <input type="email" class="am-form-field" placeholder="电子邮件*">
+                                    {{ form.username(size=32,class_='tpl-form-input',placeholder='请输入账号') }}
+                                    {% for error in form.username.errors %}
+                                    <span style="color:red;">[{{error}}]</span>
+                                    {%endfor%}
+                                  </div>
+                                  <div class="am-form-group">
+                                    <input type="text" class="am-form-field" placeholder="你的网址或者博客">
+                                  </div>
+                                  <button type="submit" class="am-btn am-btn-default">登录</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="am-u-sm-0 am-u-md-0 am-u-lg-3 opacitise" >
+                        <div class=" am-cf">
+                            <div class="am-u-lg-12 am-fr">
+                                <div class="">
+                                    <br />
+                                    <div class="am-panel  am-panel-default rightHigh" style="background-color: rgba(130,127,126,0);border-radius: 0.2rem;">
+                                          <div class="am-panel-hd" style="border-radius: 0.2rem;">
+                                            热门文章
+                                          </div>
+                                          <div class="am-panel-bd">
+                                          1.
+                                          </div>
+                                          <div class="am-panel-bd">
+                                            2.
+                                          </div>
+                                          <div class="am-panel-bd">
+                                           3.
+                                          </div>
+                                          <div class="am-panel-bd">
+                                            4.
+                                          </div>
+                                      </div>
+                                    <!--<div class="rightHigh inneropacitise"><h3>热门文章</h3><hr />
+                                        <ul>
+                                        <li>1</li>
+                                        <li>2</li>
+                                        <li>3</li>
+                                        <li>4</li>
+                                        </ul>
+                                    </div>-->
+                                    <div class="am-panel am-panel-default rightHigh" style="background-color: rgba(130,127,126,0);border-radius: 0.2rem;"style="background-color: rgba(130,127,126,0);border-radius: 0.2rem;">
+                                          <div class="am-panel-hd" style="border-radius: 0.2rem;">
+                                            网站信息
+                                          </div>
+                                          <div class="am-panel-bd">
+                                          文章数目：
+                                          </div>
+                                          <div class="am-panel-bd">
+                                           评论人数：
+                                          </div>
+                                          <div class="am-panel-bd">
+                                         最后更新：
+                                          </div>
+                                          <div class="am-panel-bd">
+                                            更新日志：
+                                          </div>
+                                      </div>
+                                      <div class="am-panel am-panel-default rightHigh" style="background-color: rgba(130,127,126,0);border-radius: 0.2rem;">
+                                          <div class="am-panel-hd" style="border-radius: 0.2rem;">
+                                            最新评论
+                                          </div>
+                                          <div class="am-panel-bd">
+                                          文章数目：
+                                          </div>
+                                          <div class="am-panel-bd">
+                                           评论人数：
+                                          </div>
+                                          <div class="am-panel-bd">
+                                         最后更新：
+                                          </div>
+                                          <div class="am-panel-bd">
+                                            更新日志：
+                                          </div>
+                                      </div>
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        
+{% endblock %}

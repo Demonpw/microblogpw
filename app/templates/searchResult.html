@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.1.0/css/bootstrap.min.css">
+  		<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+	  	<script src="https://cdn.bootcss.com/popper.js/1.12.5/umd/popper.min.js"></script>
+	  	<script src="https://cdn.bootcss.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+	  	<link rel="stylesheet" href="{{url_for('static',filename='css/searchResult.css')}}" >
+		<title></title>
+	</head>
+	<body>
+		<div >
+  			<nav class="navbar navbar-expand-lg navbar-dark" id="header">
+	  			<div class="container" id="inheader">
+		  			<a class="navbar-brand" href="#">论文，即刻所得</a>
+				 	 <div class="collapse navbar-collapse" >
+					    <ul class="navbar-nav ">
+					      <li class="nav-item">
+					        <a class="nav-link" href="#">首页 </a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#">博客</a>
+					      </li>
+					      <li class="nav-item">
+					        <a class="nav-link" href="#">关于</a>
+					      </li>
+					    </ul>
+				   </div>
+				</div>
+		  	</nav>
+		  	<div id="bodyer">
+		  		<div class="container">
+		  			<div id="bodyin">
+		  			<nav class="navbar navbar-expand-md navbar-light" >
+		  				<form action="" method="post" class="form-inline my-2 my-lg-0" id="searchs">
+	      				<input class="form-control mr-lg-4" type="search" name="search" id="search"placeholder="论文名称/doi" aria-label="Search" >
+	      				<button class="btn btn-outline-light my-2 my-lg-2" type="submit">搜索</button>
+    					</form>
+		  			</nav>
+		  			</div>
+		  			<HR align=center width=100% color=#FFFFFF SIZE=1>
+		  			<div id='inf'>
+		  				<h4><p class="text-light"><u>{{title_sci}}</u></p></h4>
+		  				<p class="text-light">来自sci-hub：<a href="{{url_sci}}"><u>{{url_sci}}</u></a></p>
+		  				<p class="text-light">查看pdf文件:<a href="http://{{pdf_sci}}"><u>http://{{pdf_sci}}</u></a></p>
+		  			</div>
+		  			<HR align=center width=100% color=#FFFFFF SIZE=1>
+		  			<div id='inf'>
+		  				<h4><p class="text-light"><u>{{title_oal}}</u></p></h4>
+		  				<p class="text-light">来自oalib：<a href="{{url_oal}}"><u>{{url_oal}}</u></a></p>
+		  				<p class="text-light">查看pdf文件:<a href="{{pdf_oal}}"><u>{{pdf_oal}}</u></a></p>
+		  			</div>
+		  			<HR align=center width=100% color=#FFFFFF SIZE=1>
+		  			<div id='inf'>
+		  				<h4><p class="text-light"><u>{{title_arxiv}}</u></p></h4>
+		  				<p class="text-light">来自arxiv：<a href="{{url_arxiv}}"><u>{{url_arxiv}}</u></a></p>
+		  				<p class="text-light">查看pdf文件:<a href="{{pdf_arxiv}}"><u>{{pdf_arxiv}}</u></a></p>
+		  			</div>
+		  			<HR align=center width=100% color=#FFFFFF SIZE=1>
+		  		</div>
+			
+		  	</div>
+		</div>
+	</body>
+</html>
