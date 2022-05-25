@@ -225,7 +225,7 @@ pyflakes==2.0.0
 pyflux==0.4.17
 pygame==1.9.4
 Pygments==2.2.0
-PyJWT==1.5.3
+PyJWT==2.4.0
 pylint==2.1.1
 pymc==2.3.7
 PyMeta3==0.5.1
